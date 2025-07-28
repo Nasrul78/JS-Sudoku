@@ -1,10 +1,9 @@
-import Cell from '../components/Cell.jsx';
+import Board from "../components/Board";
 
 const Game = () => {
     return (
-        <div className="game">
-            <h1 className="text-2xl font-bold">Sudoku Game</h1>
-            <p className="text-gray-700">Welcome to the Sudoku game! Solve the puzzle by filling in the grid.</p>
+        <div className="flex flex-col items-center justify-center min-h-screen min-w-screen bg-gray-100">
+            <h1 className="text-2xl font-bold text-black">Sudoku Game</h1>
             <Board />
         </div>
     );
