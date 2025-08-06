@@ -1,28 +1,39 @@
 const express = require('express');
+const app = express();
 const http = require('http');
 const { Server } = require('socket.io');
 const cors = require('cors');
 
-const app = express();
+app.use(cors());
+
 const server = http.createServer(app);
+const corsOptions = {
+    origin: "http://localhost:5173",
+    methods: ["GET", "POST"],
+    credentials: true,
+};
+
 const io = new Server(server, {
-    cors: {
-        origin: "*",
-    }
+    cors: corsOptions
 });
 
-app.use(cors());
+app.use(cors(corsOptions));
 
 app.get('/', (req, res) => {
     res.send('Server running!');
 });
 
 io.on('connection', (socket) => {
-    console.log('User connected: ', socket.id);
-    socket.on('disconnect', (socket) => {
-        console.log('User disconnected: ', socket.id);
+    console.log(`User connected: ${socket.id}`);
+
+    socket.on('chat', (message) => {
+        let data = {
+            sender: socket.id,
+            message: message,
+            time: new Date().toLocaleTimeString(),
+        };
+        io.emit('chat', data);
     });
-    // socket logic heree
 });
 
 const PORT = 3001;
