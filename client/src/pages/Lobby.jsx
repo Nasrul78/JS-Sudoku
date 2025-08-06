@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import ChatRoom from '../components/ChatRoom';
 
 const Lobby = () => {
     return (
@@ -10,6 +11,7 @@ const Lobby = () => {
                     Go to Home
                 </button>
             </Link>
+            <ChatRoom />
         </div>
     );
 };
