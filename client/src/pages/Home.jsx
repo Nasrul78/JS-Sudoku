@@ -1,14 +1,25 @@
+import { Link } from "react-router-dom";
+
 const Home = () => {
     return (
-        <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
-            <h1 className="text-4xl font-bold mb-4">Welcome to Sudoku Solver</h1>
-            <p className="text-lg mb-8">Solve your Sudoku puzzles with ease!</p>
-            <a
-                href="/sudoku"
-                className="px-6 py-3 bg-blue-500 text-white rounded hover:bg-blue-600 transition"
-            >
-                Start Solving
-            </a>
+        <div className="flex flex-col items-center justify-center min-h-screen">
+            <h1 className="text-4xl font-bold mb-0">Welcome to Sudoku!</h1>
+            <p className="mt-0 mb-8 text-xl">Made by Nasrul</p>
+            <Link to="/game" className="min-w-full">
+                <button className="linkButton bg-blue-500 hover:bg-blue-600">
+                    Singleplayer
+                </button>
+            </Link>
+            <Link to="/lobby" className="min-w-full mt-1">
+                <button className="linkButton bg-green-500 hover:bg-green-600">
+                    Multiplayer
+                </button>
+            </Link>
+            <Link to="/settings" className="min-w-full mt-1">
+                <button className="linkButton bg-gray-500 hover:bg-gray-600">
+                    Settings
+                </button>
+            </Link>
         </div>
     );
 };
