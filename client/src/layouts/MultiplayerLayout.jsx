@@ -10,7 +10,7 @@ const MultiplayerLayout = () => {
   const [messages, setMessages] = useState([]);
 
   useEffect(() => {
-    socket = io.connect('http://localhost:3000');
+    socket = io.connect('http://172.27.206.42:3000');
 
     socket.on('receive-message', (msg) => {
       console.log(typeof msg);
