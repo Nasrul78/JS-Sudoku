@@ -1,15 +1,18 @@
-import { useState } from 'react';
-import { Link } from 'react-router';
+import { useEffect, useState } from 'react';
+import { Link, useOutletContext } from 'react-router';
+import NameModal from '../../components/nameModal';
 import JoinModal from '../../components/JoinModal';
 
 const Lobby = () => {
-  const [roomId, setRoomId] = useState('');
-  const handleClick = (e) => {
-    if (!roomId) {
-      e.preventDefault();
-      alert('Room ID cannot be empty!');
+  const { joinRoom, name, setName, error } = useOutletContext();
+
+  useEffect(() => {
+    if (!localStorage.getItem('name')) {
+      document.getElementById('nameModal').showModal();
+    } else {
+      setName(localStorage.getItem('name'));
     }
-  };
+  }, []);
 
   return (
     <div className='flex flex-col justify-center gap-4 p-4 min-w-48'>
@@ -29,11 +32,8 @@ const Lobby = () => {
         </button>
       </div>
 
-      <JoinModal
-        roomId={roomId}
-        setRoomId={setRoomId}
-        handleClick={handleClick}
-      />
+      <NameModal setName={setName} />
+      <JoinModal joinRoom={joinRoom} name={name} error={error} />
     </div>
   );
 };

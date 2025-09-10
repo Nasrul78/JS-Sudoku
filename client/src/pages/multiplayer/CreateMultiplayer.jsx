@@ -1,10 +1,14 @@
 import { useState } from 'react';
-import { Link } from 'react-router';
+import { useOutletContext, Link } from 'react-router';
 
 const CreateMultiplayer = () => {
   const [roomId, setRoomId] = useState('');
+  const { createRoom } = useOutletContext();
+
   const handleClick = (e) => {
-    if (!roomId) {
+    if (roomId) {
+      createRoom(roomId);
+    } else {
       e.preventDefault();
       alert('Room ID cannot be empty!');
     }

@@ -1,7 +1,7 @@
-import { useParams, Link } from 'react-router';
+import { useParams, useOutletContext, Link } from 'react-router';
 
 const LobbyMultiplayer = () => {
-  let { roomId } = useParams();
+  const { roomId } = useParams();
 
   return (
     <div className='flex justify-center p-2 bg-base-200 rounded-3xl'>
