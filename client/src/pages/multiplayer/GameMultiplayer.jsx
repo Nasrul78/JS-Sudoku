@@ -1,5 +1,5 @@
 const GameMultiplayer = () => {
-  return <div>Game Multiplayer</div>;
-};
+  return <div>Game Multiplayer</div>
+}
 
-export default GameMultiplayer;
+export default GameMultiplayer
